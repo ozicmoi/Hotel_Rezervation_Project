@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/giris.css') }}" />
+     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body style="background-color: green;">
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger mt-1 mb-2" style="text-align:center">{{ message }}</div>
+          {% endfor %}
+          {% endif %}
+      {% endwith %}
+      {%if  msg=="Kayıt Basarılı Giriş Yapabilirsiniz"%}
+    <div class="alert alert-success">{{msg}}</div>
+    {%endif%}
+    <div class="container">
+  <div class="Row">
+      <div class="col-lg-4 col-lg-offset-4 centered">
+<div class="baslik">
+  <h1>Kullanıcı Girişi</h1>
+</div>
+{%if not session.get('loggedIn')%}
+<div class="form" >
+        <form action="{{ url_for('authentication') }}" method="post">
+           <label class="control-label" for="username">Kullanıcı Adı * </label>
+           <div class="input-container" style="background-color: green;">
+           <i class="fa fa-user-circle icon"></i>
+         <input id="username" name="name" type="text" placeholder="Username" class="form-control" required>
+</div>
+            <br>
+                <label class="control-label" for="Parola">Parola * </label>
+                <div class="input-container">
+                <i class="fa fa-key icon"></i>
+              <input id="parola" name="password" type="password" placeholder="Password" class="form-control" required>
+</div>
+           <br>
+              <button type="submit" class="btn btn-success btn-lg pull-right"style="width:100%;">Giriş Yap</button>
+
+        </form>
+       <a  href="/kayit"> <button class="btn btn-danger btn-lg pull-left" style="width:100%;margin-top:10px;">Kayıt Ol</button></a>
+
+      </div>
+
+     
+</div>
+</div>
+  </form>
+</div>
+</div>
+
+    </div>
+    {%else%}
+    <br><br>
+    <div class="alert alert-danger mt-1 mb-2" style="display:inline;">MEVCUT OTURUM HALA AÇIK <a href="/">Anasayfaya dön</a></div>
+    {%endif%}
+    
+  </body>
+
+</html>

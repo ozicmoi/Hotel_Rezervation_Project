@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>DÜZCE HOTEL </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      </head>
+   <body>
+      {%if session.get('userName') == 'admin'%}
+      <div class="col-md-12 d-flex justify-content-center"> 
+          <h2 class="heading">YÖNETİM PANELİ</h2>
+        </div>
+      <br>
+    <a href="/" class="btn btn-primary btn-block">Ana Sayfaya Git</a>
+    <br>
+    <h2 class="heading" style="text-align: center;">Güncel Oda Bilgileri</h2>
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Oda Tipi</th>
+            <th scope="col">Oda Sayısı</th>
+            <th scope="col">Düzenle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for row in rows %}
+            <td>{{row["id"]}}</td>
+            <td>{{row["oda_tipi"]}}</td>
+            <td>{{row["oda_sayisi"]}}</td>
+            <td><a href="/odaduzenle/{{row["id"]}}" class="btn btn-primary btn-block">Düzenle</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {%else%}
+    <div class="alert alert-danger mt-1 mb-2">BU SAYFA İÇİN YETKİNİZ YOK</div>
+    {%endif%}
+      
+   </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/kayit.css') }}" />
+     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body style="background-color: red;">
+    <div class="container">
+  <div class="Row">
+      <div class="col-lg-6 col-lg-offset-3 centered">
+<div class="baslik">
+  <h1>Kayıt Ol</h1>
+</div>
+
+
+        <form action="{{ url_for('kayit_ekle') }}" method="POST">
+
+            <label class="control-label" for="name">Kullanıcı Adı</label>
+
+              <input id="name" name="name" type="text" placeholder="Kullanıcı Adı.." class="form-control" required>
+           <br>
+           <br>
+           <label class="control-label" for="email">E-Posta * </label>
+         <input id="email" name="email" type="text" placeholder="E-Posta...." class="form-control" required>
+            <br>
+           <br>
+                <label class="control-label" for="email">Parola * </label>
+              <input id="passw" name="password" type="text" placeholder="Parola...." class="form-control" type="password" required >
+
+    <br>
+           <br>
+              <button type="submit" class="btn btn-primary btn-lg pull-right">Gönder</button>
+
+        </form>
+      </div>
+  </div>
+    </div>
+  </body>
+</html>

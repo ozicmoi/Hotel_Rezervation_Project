@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DÜZCE HOTEL </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-12">
+          <div class="block-32">
+              <br>
+              <br>
+              {% for row in rows %}
+            <form action="/kdegistir/{{row["id"]}}" method="POST">
+              <div class="row">
+                
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="checkin">Ad Soyad</label>
+                  <div class="field-icon-wrap">
+                    <div class="icon"><span class=""></span></div>
+                    <input type="text" name="adsoyad" id="" class="form-control" value="{{row["adsoyad"]}}" >
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label for="checkin">Iletişim Numarası</label>
+                  <div class="field-icon-wrap">
+                    <div class="icon"><span class=""></span></div>
+                    <input type="text" name="telno" id="" class="form-control" value="{{row["telno"]}}">
+                  </div>
+                </div>
+              </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                      <label for="checkin">Yetişkin Sayısı</label>
+                      <div class="field-icon-wrap">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="yetiskinsayi" type="text" id="" class="form-control" >
+                          <option value="{{row["yetiskinsayi"]}}" selected>{{row["yetiskinsayi"]}}</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4+">4+</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-md-0">
+                      <label for="checkin">Çocuk Sayısı</label>
+                      <div class="field-icon-wrap">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="cocuksayi" type="text" id="" class="form-control" value="{{row["cocuksayi"]}}">
+                          <option value="{{row["cocuksayi"]}}" selected>{{row["cocuksayi"]}}</option>  
+                          <option value="1">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4+">4+</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+			 <div class="row">
+			  <div class="col-md-12 mb-3 mb-md-0">
+                      <label for="checkin">Oda Türü</label>
+                      <div class="field-icon-wrap">
+                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                        <select name="odatipi" type="text" id="" class="form-control" >
+                          <option value="{{row["odatipi"]}}" selected >{{row["odatipi"]}}</option>
+                          <option value="Tekli Oda">Tekli Oda</option>
+                          <option value="Aile Odası">Aile Odası</option>
+                          <option value="Cift Kisilik Oda">Çift Kişilik Oda</option>
+                          <option value="VIP Oda">VIP Oda</option>
+                        </select>
+                      </div>
+                    </div>
+					</div>
+              <div class="row">
+                <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+                  <label for="checkin">Giriş Tarihi</label>
+                  <div class="field-icon-wrap">
+                    <div class="icon"><span class="icon-calendar"></span></div>
+                    <input type="text" name="giristarihi" id="checkin_date" class="form-control" value="{{row["giristarihi"]}}">
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+                  <label for="checkin">Çıkış Tarihi</label>
+                  <div class="field-icon-wrap">
+                    <div class="icon"><span class="icon-calendar"></span></div>
+                    <input type="text" name="cikistarihi" id="checkout_date" class="form-control" value="{{row["cikistarihi"]}}">
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
+ 
+                </div>
+                <div class="col-md-6 col-lg-3 align-self-end">
+                    {%if session.get('loggedIn')%}
+                  <button class="btn btn-primary btn-block">Rezervasyon Düzenle</button>
+                  {%else%}
+                  <span class="subheading-sm">Üye olmadan rezervasyon yapamazsınız...</span>
+                  {%endif%}
+                </div>
+              </div>
+              {% endfor %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      </body>
+</html>

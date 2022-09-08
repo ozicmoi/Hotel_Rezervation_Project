@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+   <head>
+      <style>
+      .item
+      {
+         border: 2px solid chocolate ;
+         text-align: center;
+         width: 1300px;
+         height: 150px;
+      }
+      </style>
+      <title>Rezeravasyon Detayları</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+      <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/open-iconic-bootstrap.min.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/icomoon.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+   <body>
+      
+      <div class="row d-flex justify-content-center">
+               <div class="item">
+                  
+                 <div class="block-34">
+                     <strong ><a href="/" class="btn btn-primary btn-block" class="justify-content-sm-start">Ana Sayfaya Git</a>
+                  {{s}}
+                  {%if rows != [] %}
+                  <h1>Rezeravasyon Kayıtlarınız</h1>
+                  {% for row in rows %}
+                  
+                 
+                  <h2 class="heading">{{row["userName"]}}</h2>
+                   <div class="image">
+                     <a href="#"><img style="width: 30%; text-align: center;" src="{{ url_for('static', filename='images/otel.jpg') }}" alt="Image placeholder"></a>
+                   </div>
+                   <div class="text">
+                     <h2 class="heading">{{row["odatipi"]}}</h2>
+                     <ul class="specs">
+                        <li><strong>Ad Soyad :</strong> {{row["adsoyad"]}}</li>
+                        <li><strong>Telefon Numarası:</strong> {{row["telno"]}}</li>
+                        <li><strong>Giriş Tarihi :</strong> {{row["giristarihi"]}}</li>
+                       <li><strong>Çıkış Tarihi :</strong> {{row["cikistarihi"]}}</li>
+                        <li><strong>Yetişkin:</strong> {{row["yetiskinsayi"]}}</li>
+                        <li><strong>Çocuk :</strong> {{row["cocuksayi"]}}</li>
+                       <li><strong>Özellikler:</strong> Closet with hangers, HD flat-screen TV, Telephone</li>
+                       <li><strong>Rezeravasyon Numarası</strong> {{row["id"]}}</li>
+                       
+                        <li><strong><a href="/rezsil/{{row["id"]}}" class="btn btn-primary btn-block">Rezeravasyon Sil</a></li>
+                        <li><strong><a href="/kduzenle/{{row["id"]}}" class="btn btn-primary btn-block">Düzenle</a></li>
+                          
+                       {% endfor %}
+                       {%else%}
+                          <h1>Rezeravasyon Kaydınız Bulunmamaktadır.</h1>
+                        {%endif%}
+                       
+                        
+                     </ul>
+                   </div>
+                 </div>
+               </div>
+               
+
+            </div>
+   </body>
+</html>
